@@ -1,0 +1,10 @@
+package connect;
+
+public class StudentDB {
+	
+	public static void insertStudentToDb(StudentClass sc)
+	{
+		
+	}
+
+}

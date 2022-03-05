@@ -1,0 +1,35 @@
+package connect;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+
+public class StudentDB {
+	
+	public static boolean insertStudentToDb(StudentClass sc)
+	{
+		boolean flag=false;
+		//jdbc code
+		try
+		{
+			Connection con=ConnectionGenerator.CreateConnection();
+			String q="Insert into Student(StudentName, StudentPhone, StudentCity) values(?,?,?)";
+			PreparedStatement ps=con.prepareStatement(q);
+			
+			//set the values of paameter
+			ps.setString(1, sc.getStudentName());
+			ps.setString(2, sc.getStudentPhone());
+			ps.setString(3, sc.getStudentCity());
+			
+			//execute
+			ps.executeUpdate();
+			flag=true;
+			
+		}
+		catch (Exception e) {
+			// TODO: handle exception
+		}
+
+		return flag;
+	}
+
+}
